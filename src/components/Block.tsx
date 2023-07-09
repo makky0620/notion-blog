@@ -1,9 +1,11 @@
 import React from 'react';
 import { BlockResponse } from '../types/notion';
+import { BulletedListItem } from './notion/BulletedListItem';
 import { Callout } from './notion/Callout';
 import H1 from './notion/H1';
 import H2 from './notion/H2';
 import H3 from './notion/H3';
+import { NumberedListItem } from './notion/NumberedListItem';
 import { Paragraph } from './notion/Paragraph';
 
 type Props = {
@@ -24,6 +26,10 @@ const Block: React.FC<Props> = ({ block }) => {
       return <H3 block={block} />;
     case 'callout':
       return <Callout block={block} />;
+    case 'bulleted_list_item':
+      return <BulletedListItem block={block} />;
+    case 'numbered_list_item':
+      return <NumberedListItem block={block} />;
     default:
       return <></>;
   }

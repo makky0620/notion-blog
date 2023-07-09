@@ -1,5 +1,5 @@
-import { BlockResponse, RichTextResponse } from "@/src/types/notion";
-import React from "react";
+import { BlockResponse, RichTextResponse } from '@/src/types/notion';
+import React from 'react';
 
 type Props = {
   text: Array<RichTextResponse>;
@@ -8,14 +8,17 @@ type Props = {
 export const RichText: React.FC<Props> = ({ text }) => {
   console.log(text);
   return (
-    <p>
+    <p className='inline whitespace-pre-wrap break-words leading-loose'>
       {text.length === 0 ? (
-        <span className="" />
+        <span className='block h-6' />
       ) : (
         <>
           {text.map((textItem: RichTextResponse, index: number) => {
             const { annotations, href } = textItem;
             const { bold, code, italic, underline } = annotations;
+            const annotationClasses = Object.keys(annotations).filter(
+              (param) => annotations[param as keyof typeof annotations] === true
+            );
             const key = `${index}`;
 
             if (href) {
@@ -36,20 +39,24 @@ export const RichText: React.FC<Props> = ({ text }) => {
               );
             }
 
-            return (
-              <span
-                key={key}
-                className={[
-                  '',
-                  bold ? 'font-bold' : '',
-                  code ? 'bg-gray-100 p-1 font-mono text-sm rounded-md' : '',
-                  italic ? 'italic' : '',
-                  underline ? 'underline' : '',
-                ].join(' ')}
-              >
-                {textItem.plain_text}
-              </span>
-            );
+            if (annotationClasses.length > 0) {
+              return (
+                <span
+                  key={key}
+                  className={[
+                    '',
+                    bold ? 'font-bold' : '',
+                    code ? 'bg-gray-100 p-1 font-mono text-sm rounded-md' : '',
+                    italic ? 'italic' : '',
+                    underline ? 'underline' : '',
+                  ].join(' ')}
+                >
+                  {textItem.plain_text}
+                </span>
+              );
+            }
+
+            return textItem.plain_text;
           })}
         </>
       )}
