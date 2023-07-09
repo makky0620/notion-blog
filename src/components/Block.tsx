@@ -7,6 +7,7 @@ import H2 from './notion/H2';
 import H3 from './notion/H3';
 import { NumberedListItem } from './notion/NumberedListItem';
 import { Paragraph } from './notion/Paragraph';
+import {Todo} from './notion/Todo';
 
 type Props = {
   block: BlockResponse;
@@ -30,6 +31,15 @@ const Block: React.FC<Props> = ({ block }) => {
       return <BulletedListItem block={block} />;
     case 'numbered_list_item':
       return <NumberedListItem block={block} />;
+    case 'to_do':
+      return <Todo block={block} />;
+    case 'code':
+    case 'quote':
+    case 'bookmark':
+    case 'link_preview':
+    case 'image':
+    case 'divider':
+    case 'table_of_contents':
     default:
       return <></>;
   }
