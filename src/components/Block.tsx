@@ -2,6 +2,7 @@ import React from 'react';
 import { BlockResponse } from '../types/notion';
 import { BulletedListItem } from './notion/BulletedListItem';
 import { Callout } from './notion/Callout';
+import {Code} from './notion/Code';
 import H1 from './notion/H1';
 import H2 from './notion/H2';
 import H3 from './notion/H3';
@@ -34,6 +35,7 @@ const Block: React.FC<Props> = ({ block }) => {
     case 'to_do':
       return <Todo block={block} />;
     case 'code':
+      return <Code block={block} />
     case 'quote':
     case 'bookmark':
     case 'link_preview':
