@@ -17,7 +17,7 @@ export const Todo: React.FC<Props> = ({ block }) => {
         disabled
       />
       <div className='pt-0.5'>
-        {block.to_do.checked ? <ImCheckboxChecked />: <ImCheckboxUnchecked />}
+        {block.to_do.checked ? <ImCheckboxChecked /> : <ImCheckboxUnchecked />}
       </div>
       <span className='ml-2 sp:text-sm'>
         <RichText text={block.to_do.rich_text} />
