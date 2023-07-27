@@ -8,6 +8,7 @@ import H2 from './notion/H2';
 import H3 from './notion/H3';
 import { NumberedListItem } from './notion/NumberedListItem';
 import { Paragraph } from './notion/Paragraph';
+import { Quate } from './notion/Quote';
 import { Todo } from './notion/Todo';
 
 type Props = {
@@ -35,8 +36,9 @@ const Block: React.FC<Props> = ({ block }) => {
     case 'to_do':
       return <Todo block={block} />;
     case 'code':
-      return <Code block={block} />
+      return <Code block={block} />;
     case 'quote':
+      return <Quate block={block} />;
     case 'bookmark':
     case 'link_preview':
     case 'image':
