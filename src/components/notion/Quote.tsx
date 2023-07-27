@@ -11,7 +11,7 @@ export const Quate: React.FC<Props> = ({ block }) => {
     <blockquote
       className={[
         'relative rounded px-6 py-2 text-lg text-slate-600 sp:text-base',
-        'before:absolute before:top-1/2 before:left-1 before:h-[85%] before:w-1 before:-translate-y-1/2 before:rounded-full before:bg-slate-500'
+        'before:absolute before:top-1/2 before:left-1 before:h-[60%] before:w-1 before:-translate-y-1/2 before:rounded-full before:bg-slate-500'
       ].join(' ')}
     >
       <RichText text={block.quote.rich_text} />
