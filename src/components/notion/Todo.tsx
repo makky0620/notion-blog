@@ -1,12 +1,12 @@
 import { ToDoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import React from 'react';
 import { RichText } from './RichText';
+import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im';
 
 type Props = {
   block: ToDoBlockObjectResponse;
 };
 
-// TODO: Check icon
 export const Todo: React.FC<Props> = ({ block }) => {
   return (
     <li className='flex list-none items-center'>
@@ -17,7 +17,7 @@ export const Todo: React.FC<Props> = ({ block }) => {
         disabled
       />
       <div className='pt-0.5'>
-        {block.to_do.checked ? <div>✅</div> : <div>🟩</div>}
+        {block.to_do.checked ? <ImCheckboxChecked />: <ImCheckboxUnchecked />}
       </div>
       <span className='ml-2 sp:text-sm'>
         <RichText text={block.to_do.rich_text} />

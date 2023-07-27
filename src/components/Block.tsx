@@ -7,7 +7,7 @@ import H2 from './notion/H2';
 import H3 from './notion/H3';
 import { NumberedListItem } from './notion/NumberedListItem';
 import { Paragraph } from './notion/Paragraph';
-import {Todo} from './notion/Todo';
+import { Todo } from './notion/Todo';
 
 type Props = {
   block: BlockResponse;
