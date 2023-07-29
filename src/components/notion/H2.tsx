@@ -6,7 +6,7 @@ type Props = {
   block: Heading2BlockObjectResponse;
 };
 
-const H2: React.FC<Props> = ({ block }) => {
+export const H2: React.FC<Props> = ({ block }) => {
   return (
     <h2 className='my-6 font-bold text-[1.5em]'>
       <RichText text={block.heading_2.rich_text} />
@@ -14,4 +14,3 @@ const H2: React.FC<Props> = ({ block }) => {
   );
 };
 
-export default H2;
