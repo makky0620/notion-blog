@@ -4,6 +4,7 @@ import { Bookmark } from './notion/Bookmark';
 import { BulletedListItem } from './notion/BulletedListItem';
 import { Callout } from './notion/Callout';
 import { Code } from './notion/Code';
+import { Divider } from './notion/Divider';
 import H1 from './notion/H1';
 import H2 from './notion/H2';
 import H3 from './notion/H3';
@@ -42,10 +43,11 @@ const Block: React.FC<Props> = ({ block }) => {
       return <Quate block={block} />;
     case 'bookmark':
       return <Bookmark block={block} />;
-    case 'link_preview':
-    case 'image':
     case 'divider':
+      return <Divider />;
     case 'table_of_contents':
+    case 'image':
+    case 'link_preview':
     default:
       return <></>;
   }
