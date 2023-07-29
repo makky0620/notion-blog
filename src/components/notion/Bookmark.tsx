@@ -17,7 +17,6 @@ export const Bookmark: React.FC<Props> = ({ block }) => {
         faviconUrl: '',
       };
   const noOgp = !ogp.title && !ogp.description && !ogp.imageUrl;
-  console.log(ogp);
   return noOgp ? <Skelton /> : <LinkPreview {...ogp} />;
 };
 
