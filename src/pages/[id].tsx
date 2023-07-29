@@ -1,9 +1,10 @@
-import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import Block from "../components/Block";
-import Container from "../components/Container";
-import { getPage } from "../libs/notion/pages";
-import { getPosts } from "../libs/notion/posts";
-import type { BlockResponse, Page } from "../types/notion";
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import Block from '../components/Block';
+import Container from '../components/Container';
+import { getPage } from '../libs/notion/pages';
+import { getPosts } from '../libs/notion/posts';
+import type { Page } from '../types/notion';
 
 type Props = {
   page: Page;
@@ -14,7 +15,7 @@ const Post: NextPage<Props> = ({ page }) => {
     <Container>
       <h1>{page.title}</h1>
       <article>
-        {page.blocks.map((block: BlockResponse, index: number) => (
+        {page.blocks.map((block: BlockObjectResponse, index: number) => (
           <Block key={`block-${index}`} block={block} />
         ))}
       </article>

@@ -1,4 +1,6 @@
-import {BlockObjectResponse, ListBlockChildrenResponse, PageObjectResponse, PartialBlockObjectResponse, RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+  BlockObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
 
 export type Post = {
   id: string;
@@ -9,12 +11,6 @@ export type Post = {
 };
 
 export type Page = {
-  title: string,
-  blocks:BlockResponse[] 
+  title: string;
+  blocks: BlockObjectResponse[];
 };
-
-
-export type PageReponse = PageObjectResponse;
-export type BlockResponse = BlockObjectResponse;
-export type RichTextResponse = RichTextItemResponse;
-

@@ -1,19 +1,18 @@
-import { BlockResponse, RichTextResponse } from '@/src/types/notion';
+import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 import React from 'react';
 
 type Props = {
-  text: Array<RichTextResponse>;
+  text: Array<RichTextItemResponse>;
 };
 
 export const RichText: React.FC<Props> = ({ text }) => {
-  console.log(text);
   return (
     <p className='inline whitespace-pre-wrap break-words leading-loose'>
       {text.length === 0 ? (
         <span className='block h-6' />
       ) : (
         <>
-          {text.map((textItem: RichTextResponse, index: number) => {
+          {text.map((textItem: RichTextItemResponse, index: number) => {
             const { annotations, href } = textItem;
             const { bold, code, italic, underline } = annotations;
             const annotationClasses = Object.keys(annotations).filter(
