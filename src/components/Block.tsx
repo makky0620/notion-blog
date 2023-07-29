@@ -1,8 +1,9 @@
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import React from 'react';
-import { BlockResponse } from '../types/notion';
+import { Bookmark } from './notion/Bookmark';
 import { BulletedListItem } from './notion/BulletedListItem';
 import { Callout } from './notion/Callout';
-import {Code} from './notion/Code';
+import { Code } from './notion/Code';
 import H1 from './notion/H1';
 import H2 from './notion/H2';
 import H3 from './notion/H3';
@@ -12,7 +13,7 @@ import { Quate } from './notion/Quote';
 import { Todo } from './notion/Todo';
 
 type Props = {
-  block: BlockResponse;
+  block: BlockObjectResponse;
 };
 
 const Block: React.FC<Props> = ({ block }) => {
@@ -40,6 +41,7 @@ const Block: React.FC<Props> = ({ block }) => {
     case 'quote':
       return <Quate block={block} />;
     case 'bookmark':
+      return <Bookmark block={block} />;
     case 'link_preview':
     case 'image':
     case 'divider':

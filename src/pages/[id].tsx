@@ -4,6 +4,7 @@ import Block from '../components/Block';
 import Container from '../components/Container';
 import { getPage } from '../libs/notion/pages';
 import { getPosts } from '../libs/notion/posts';
+import {setOgp} from '../libs/ogp';
 import type { Page } from '../types/notion';
 
 type Props = {
@@ -38,10 +39,14 @@ type Params = {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const { id } = params as Params;
   const page = await getPage(id);
+  const blocksWithOgp = await setOgp(page.blocks);
 
   return {
     props: {
-      page: page,
+      page: {
+        title: page.title,
+        blocks: blocksWithOgp
+      },
     },
   };
 };
