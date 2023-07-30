@@ -3,7 +3,4 @@
 @tailwind utilities;
 
 @layer base {
-  a {
-    @apply text-[#2563eb]
-  }
 }

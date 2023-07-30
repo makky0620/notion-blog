@@ -1,9 +1,9 @@
-import { GetStaticProps, NextPage } from "next";
-import Link from "next/link";
-import React from "react";
-import Container from "../components/Container";
-import { getPosts } from "../libs/notion/posts";
-import { Post } from "../types/notion";
+import { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
+import React from 'react';
+import Container from '../components/Container';
+import { getPosts } from '../libs/notion/posts';
+import { Post } from '../types/notion';
 
 type Props = {
   posts: Post[];
@@ -12,31 +12,41 @@ type Props = {
 const Home: NextPage<Props> = ({ posts }) => {
   return (
     <main>
-      <Container>
-        <header className='mb-[50px]'>
-          <h1 className='font-extrabold text-[2em] my-[0.67em]'>
-            Next.js blog powered by Notion API
-          </h1>
-          <p className='opacity-70 my-4'>
-            This is an example of Notion blog. The data comes from this table.
-            Getthe source code on Github on building your own
-          </p>
-        </header>
-
-        <h2 className='text-[15px] mt-[0.83em] mb-[20px] pb-[20px] opacity-60 border-b'>
-          ALL POSTS
-        </h2>
-        <ol>
-          {posts.map((post: Post, index: number) => (
-            <li key={`post-${index}`} className='mb-[50px]'>
-              <h3 className='text-2xl font-bold'>{post.title}</h3>
-              <p className='mt-0 mb-[12px] opacity-60'>{post.date}</p>
-              <Link href={`/${post.id}`}>Read post →</Link>
-            </li>
-          ))}
-        </ol>
-      </Container>
+      <div className='font-sans'>
+        <div className='mb-[30px] bg-slate-300'>
+          <div className='p-20'>
+            <div className='px-3 py-20'>
+              <div className='text-4xl text-center font-medium'>My Notion Blog</div></div>
+          </div>
+        </div>
+        <div className='mt-[30px]'>
+          <div className='mt-16'>
+            <div className='text-5xl text-center font-medium text-slate-800'>Latest posts</div>
+          </div>
+          <div className='my-10 px-10 w-auto mx-auto max-w-screen-xl'>
+            <div className='p-10 grid grid-cols-3 gap-6'>
+              {posts.map((post: Post, index: number) => (
+                <Card key={index} post={post} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
+  );
+};
+
+const Card: React.FC<{ post: Post }> = ({ post }) => {
+  return (
+    <div className='my-6 p-6 border border-inherit rounded hover:shadow-lg ease-linear duration-200'>
+      <a href={`/${post.id}`}>
+      <div className='h-[200px] bg-slate-300' />
+      <div className='py-6'>
+        <div className='mb-3 text-2xl text-slate-800'>{post.title}</div>
+        <div className='mb-6 text-xs'>{post.date}</div>
+      </div>
+      </a>
+    </div>
   );
 };
 
