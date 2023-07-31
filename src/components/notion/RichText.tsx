@@ -7,7 +7,7 @@ type Props = {
 
 export const RichText: React.FC<Props> = ({ text }) => {
   return (
-    <p className='inline whitespace-pre-wrap break-words leading-loose'>
+    <p className='block ms-0 me-0 my-[1em]'>
       {text.length === 0 ? (
         <span className='block h-6' />
       ) : (
