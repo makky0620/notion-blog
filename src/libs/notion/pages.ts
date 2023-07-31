@@ -14,11 +14,15 @@ export const getPage = async (pageId: string): Promise<Page> => {
   if (properties.Title.type !== 'title') {
     throw new Error('Title is not title');
   }
+  if (properties.Date.type !== 'date') {
+    throw new Error('Date is not date');
+  }
 
   const blocks = (await getBlocks(pageId)) as BlockObjectResponse[];
 
   return {
     title: properties.Title.title[0].plain_text,
-    blocks: blocks,
+    date: properties.Date.date?.start,
+    blocks: blocks
   };
 };

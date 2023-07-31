@@ -12,5 +12,6 @@ export type Post = {
 
 export type Page = {
   title: string;
+  date?: string;
   blocks: BlockObjectResponse[];
 };
