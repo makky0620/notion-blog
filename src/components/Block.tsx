@@ -8,6 +8,7 @@ import { Divider } from './notion/Divider';
 import { H1 } from './notion/H1';
 import { H2 } from './notion/H2';
 import { H3 } from './notion/H3';
+import { Image } from './notion/Image';
 import { NumberedListItem } from './notion/NumberedListItem';
 import { Paragraph } from './notion/Paragraph';
 import { Quate } from './notion/Quote';
@@ -45,8 +46,10 @@ const Block: React.FC<Props> = ({ block }) => {
       return <Bookmark block={block} />;
     case 'divider':
       return <Divider />;
-    case 'table_of_contents':
     case 'image':
+      // eslint-disable-next-line jsx-a11y/alt-text
+      return <Image block={block} />;
+    case 'table_of_contents':
     case 'link_preview':
     default:
       return <></>;
