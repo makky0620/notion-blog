@@ -12,15 +12,17 @@ type Props = {
 
 const Post: NextPage<Props> = ({ page }) => {
   return (
-    <div className='mx-auto my-10 px-10 font-sans'>
-      <h1 className='text-5xl font-medium leading-[67.2px]'>{page.title}</h1>
-      <div className='text-sm font-normal'>{page.date && page.date}</div>
-      <hr className='my-10 border border-inherit' />
-      <article>
-        {page.blocks.map((block: BlockObjectResponse, index: number) => (
-          <Block key={`block-${index}`} block={block} />
-        ))}
-      </article>
+    <div className='xl:w-[844px] xl:mx-auto'>
+      <div className='mx-auto my-10 px-10 font-sans'>
+        <h1 className='text-5xl font-medium leading-[67.2px]'>{page.title}</h1>
+        <div className='text-sm font-normal'>{page.date && page.date}</div>
+        <hr className='my-10 border border-inherit' />
+        <div className='mx-auto max-w-[730px]'>
+          {page.blocks.map((block: BlockObjectResponse, index: number) => (
+            <Block key={`block-${index}`} block={block} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
