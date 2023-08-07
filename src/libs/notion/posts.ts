@@ -1,13 +1,16 @@
-import {Post} from "@/src/types/notion";
-import {GetPageResponse, RichTextItemResponse} from "@notionhq/client/build/src/api-endpoints";
-import {client} from "./client";
+import { Post } from '@/src/types/notion';
+import {
+  GetPageResponse,
+  RichTextItemResponse,
+} from '@notionhq/client/build/src/api-endpoints';
+import { client } from './client';
 
 export const getPosts = async (): Promise<Post[]> => {
   const database_id = process.env.NOTION_DATABASE_ID;
   if (!database_id) {
     throw Error;
   }
-    const res = await client.databases.query({
+  const res = await client.databases.query({
     database_id: database_id,
   });
 
@@ -32,18 +35,18 @@ const toPost = (value: GetPageResponse): Post | null => {
     value.properties.Date?.type === 'date' && value.properties.Date.date
       ? value.properties.Date.date.start
       : '';
-  const image =
-    value.properties.Image?.type === 'files' &&
-    value.properties.Image.files[0]?.type === 'file'
-      ? value.properties.Image.files[0].file.url
-      : '/ogp.webp';
+  const thumbnail =
+    value.properties.Thumbnail?.type === 'files' &&
+    value.properties.Thumbnail.files[0]?.type === 'file'
+      ? value.properties.Thumbnail.files[0].file.url
+      : '';
 
   return {
     id: value.id,
     title,
     slug,
     date,
-    image,
+    thumbnail,
   };
 };
 
@@ -53,4 +56,3 @@ const richTextToString = (richText: RichTextItemResponse[]) => {
     ''
   );
 };
-
