@@ -22,6 +22,12 @@ export const getPosts = async (): Promise<Post[]> => {
 const toPost = (value: GetPageResponse): Post | null => {
   if (!('properties' in value)) return null;
 
+  const isPublic =
+    value.properties.Public?.type === 'checkbox'
+      ? value.properties.Public.checkbox
+      : false;
+  if (!isPublic) return null;
+
   const title =
     value.properties.Title?.type === 'title'
       ? richTextToString(value.properties.Title.title)

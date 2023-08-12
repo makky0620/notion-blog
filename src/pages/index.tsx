@@ -8,7 +8,6 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
-  console.log(posts);
   return (
     <main>
       <div className='font-sans'>
