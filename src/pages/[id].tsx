@@ -11,6 +11,9 @@ type Props = {
 };
 
 const Post: NextPage<Props> = ({ page }) => {
+  // FIXME: build時にpage.titleにアクセスできないというエラーになる
+  if (page === undefined) return <></>;
+
   return (
     <div className='xl:w-[844px] xl:mx-auto'>
       <div className='mx-auto my-10 px-10 font-sans'>
